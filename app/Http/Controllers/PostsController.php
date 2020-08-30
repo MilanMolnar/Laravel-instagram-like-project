@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use Illuminate\Validation\UnauthorizedException;
 use Intervention\Image\Facades\Image;
 
 class PostsController extends Controller
@@ -31,7 +32,41 @@ class PostsController extends Controller
         dd($id);
     }
 
+    public function delete($post){
+        $delete_post = Post::find($post);
+        if(auth()->user()->id == $delete_post->user->id){
+            $delete_post->delete();
+        }else{
+            abort(403);
+        }
+        if (auth()->user()->posts->count() > 0)
+            return redirect()->back()->with("message", "successfully deleted post with an id of: {$delete_post->id}");
+        return redirect('/profile/' . auth()->user()->id);
+    }
 
+    public function manage(){
+        return view('posts.manage');
+    }
+    public function edit($post){
+        $actualPost = Post::find($post);
+        return view('posts.edit', compact('actualPost'));
+    }
+
+    public function update($post){
+        $actualPost = Post::find($post);
+        $data = request()->validate([
+            'caption'=> ['min:3','nullable'],
+            'desc' => ['min:3','nullable'],
+        ]);
+        if ($data['caption'] == null){
+            $data['caption'] = $actualPost->caption;
+        }
+        if ($data['desc'] == null){
+            $data['desc'] = $actualPost->desc;
+        }
+        $actualPost->update($data);
+        return redirect("/p/" . $actualPost->id);
+    }
 
     public function store(){
         $data = request()->validate([
@@ -45,7 +80,6 @@ class PostsController extends Controller
 
         $image = Image::make(public_path("storage/{$imagePath}"))->fit(1200,1200);
         $image->save();
-
         auth()->user()->posts()->create([
             'caption' => $data['caption'],
             'desc'=> $data['desc'],
@@ -57,7 +91,7 @@ class PostsController extends Controller
 
 
     public function cctv(Post $post){
-        $posts = Post::latest()->paginate(6);
+        $posts = Post::latest()->paginate(5);
         return view('posts.cctv', compact('posts'));
     }
 

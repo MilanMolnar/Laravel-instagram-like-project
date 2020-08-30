@@ -37,6 +37,37 @@ Vue.component('cctv-button', require('./components/CCTVButton.vue').default);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+//search bar
+$(document).ready(function() {
+    $('.search').click(function() {
+        $('.search').addClass('activated');
+        $('.line-1').css({
+            'transform': 'rotate(45deg)',
+            'top': '0px',
+            'left': '0px'
+        });
+        $('.line-2').css({
+            'height':'40px',
+            'opacity':'1'
+        });
+    });
+    $('.line-1, .line-2').click(function() {
+        $('.search').removeClass('activated').val('');
+        $('.line-1').css({
+            'transform': 'rotate(-45deg)',
+            'top': '-20px',
+            'left': '34px'
+        });
+        $('.line-2').css({
+            'height':'0px',
+            'opacity':'0'
+        });
+
+    });
+});
+
+
+
 const app = new Vue({
     el: '#app',
 });

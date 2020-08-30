@@ -29,7 +29,13 @@ Route::get('/p/create', 'PostsController@create');
 Route::post('/p', 'PostsController@store');
 Route::get('/p/{post}', 'PostsController@show');
 Route::post('/p/{post}', 'CommentController@store');
-
+Route::get('/manage', 'PostsController@manage');
+Route::get('/manage/delete/{post}', 'PostsController@delete');
+Route::get('/account', 'UserController@show');
+Route::patch('/account/edit', 'UserController@edit');
+Route::get('/p/show/{post}', 'PostsController@edit')->name('posts.edit');
+Route::patch('/p/edit/{post}', 'PostsController@update');
+Route::get('/c/delete/{comment}', 'CommentController@delete');
 
 Route::get('/profile/{user}', 'ProfilesController@index')->name('profile.show');
 Route::get('/profile/{user}/edit', 'ProfilesController@edit')->name('profile.edit');

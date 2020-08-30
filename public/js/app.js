@@ -50618,7 +50618,34 @@ Vue.component('cctv-button', __webpack_require__(/*! ./components/CCTVButton.vue
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+//search bar
 
+$(document).ready(function () {
+  $('.search').click(function () {
+    $('.search').addClass('activated');
+    $('.line-1').css({
+      'transform': 'rotate(45deg)',
+      'top': '0px',
+      'left': '0px'
+    });
+    $('.line-2').css({
+      'height': '40px',
+      'opacity': '1'
+    });
+  });
+  $('.line-1, .line-2').click(function () {
+    $('.search').removeClass('activated').val('');
+    $('.line-1').css({
+      'transform': 'rotate(-45deg)',
+      'top': '-20px',
+      'left': '34px'
+    });
+    $('.line-2').css({
+      'height': '0px',
+      'opacity': '0'
+    });
+  });
+});
 var app = new Vue({
   el: '#app'
 });
@@ -51033,8 +51060,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Milan Developer\Desktop\test-branch\php-laravel-igclone\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Milan Developer\Desktop\test-branch\php-laravel-igclone\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\nevie\Desktop\new-laravel-insta\php-laravel-igclone\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\nevie\Desktop\new-laravel-insta\php-laravel-igclone\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

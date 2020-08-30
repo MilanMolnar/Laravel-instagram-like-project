@@ -21,5 +21,10 @@ class CommentController extends Controller
 
         return redirect('/p/' . $post);
     }
+    function delete($comment){
+        $actualComment = Comment::find($comment);
+        $actualComment->delete();
+        return redirect('/p/' . $actualComment->post_id);
+    }
 }
 

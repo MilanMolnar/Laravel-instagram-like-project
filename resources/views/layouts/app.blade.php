@@ -67,6 +67,10 @@
                                         <b><p class="pl-3" style="color: #ffffff;  margin: 0px; padding: 0px" >• About</p></b>
                                     </a>
 
+                                    <a style="color: #ffffff" class="dropdown-item" href="/account">
+                                        <b><p class="pl-3" style="color: #ffffff;  margin: 0px; padding: 0px" >• Account</p></b>
+                                    </a>
+
                                     <a style="color: #ffffff" class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

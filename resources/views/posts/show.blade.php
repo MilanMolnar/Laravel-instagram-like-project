@@ -18,7 +18,11 @@
                         <h5 class="font-weight-bold">
                             <a style="color: #1b4b72" href="/profile/{{ $post->user->id }}">{{$post->user->username}}</a>
                              •
-                            <a href="/profile/{{ $post->user->id }}" style="font-size: smaller">View Profile</a>
+                            @if($post->user->id != auth()->user()->id)
+                                <a href="/profile/{{ $post->user->id }}" style="font-size: smaller">View Profile</a>
+                            @else
+                                <a href="/p/show/{{ $post->id }}" style="font-size: smaller">Edit Post</a>
+                            @endif
                         </h5>
                     </div>
 
@@ -35,15 +39,23 @@
                     @if($comment != $post->comments[$post->comments->count() - 1])
                         <div class="d-flex pl-1 pt-1 pb-0">
                             <img src="{{$comment->user->profile->profileImage()}}" alt="profile-pic" class=" w-25 rounded-circle" style="max-width: 30px; max-height: 30px">
-                            <a  class="pl-2 pt-1" style="color: #1b4b72" href="/profile/{{ $comment->user->id }}">{{$comment->user->username}}</a>
-                                <p class="pl-2 pt-1"> •</p>
+                            @if($comment->user_id != auth()->user()->id)
+                                <a  class="pl-2 pt-1" style="color: #1b4b72" href="/profile/{{ $comment->user->id }}">{{$comment->user->username}}</a>
+                            @else
+                                <a class="pl-2 pt-1" style="color: #1b4b72" href="/c/delete/{{ $comment->id }}" style="font-size: smaller">Delete</a>
+                            @endif
+                            <p class="pl-2 pt-1"> •</p>
                             <p class="pl-2 pt-1"> {{$comment->content}}</p>
                         </div>
                         <hr style="padding: 0px;opacity: 30%; margin: 5px; background-color: lightblue" >
                     @else
                         <div class="d-flex pl-1">
                             <img src="{{$comment->user->profile->profileImage()}}" alt="profile-pic" class=" w-25 rounded-circle" style="max-width: 30px; max-height: 30px">
-                            <a  class="pl-2 pt-1" style="color: #1b4b72" href="/profile/{{ $comment->user->id }}">{{$comment->user->username}}</a>
+                            @if($comment->user_id != auth()->user()->id)
+                                <a class="pl-2 pt-1" style="color: #1b4b72" href="/profile/{{ $comment->user->id }}">{{$comment->user->username}}</a>
+                            @else
+                                <a class="pl-2 pt-1" style="color: #1b4b72" href="/c/delete/{{ $comment->id }}" style="font-size: smaller">Delete</a>
+                            @endif
                             <p class="pl-2 pt-1"> •</p>
                             <p class="pl-2 pt-1"> {{$comment->content}}</p>
                         </div>

@@ -28,8 +28,9 @@
                     <label for="description" class="col-md-4 col-form-label ">Description</label>
 
 
-                    <input id="description" type="text"
-                           class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') ?? $user->profile->description  }}"  autocomplete="description" autofocus>
+                    <textarea style="max-height: 150px; min-height:50px" id="description" type="text"
+                        class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') ?? $user->profile->description  }}"  autocomplete="description" autofocus>
+                    </textarea>
                     @error('description')
                     <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -63,6 +64,8 @@
 
                 <div class="row pt-4">
                     <button class="btn btn-primary">Save Profile</button>
+                    <a href="/profile/{{auth()->user()->id}}" class="btn btn-outline-danger ml-2"> cancel</a>
+
                 </div>
             </div>
         </div>
