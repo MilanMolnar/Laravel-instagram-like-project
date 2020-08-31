@@ -14,7 +14,7 @@
             @foreach(auth()->user()->posts as $post)
                 <div class="col-4 pb-4" >
                     <div id="container-pic">
-                            <img id="delete-pic" src="/storage/{{ $post->image }}" alt="insta_post" class="w-100 border-right border-bottom border-left border-top">
+                            <img id="delete-pic" src="/storage/{{ $post->thumbnail }}" alt="insta_post" class="w-100 border-right border-bottom border-left border-top">
                         <a href="/manage/delete/{{$post->id}}">
                             <div id="overlay-pic">
                                 <img src="/images/trashbin-icon.png" id="trash-icon">

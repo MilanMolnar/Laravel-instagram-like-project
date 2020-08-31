@@ -2118,7 +2118,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     vanillaTilt: function vanillaTilt() {
-      vanilla_tilt__WEBPACK_IMPORTED_MODULE_0___default.a.init(document.querySelector('#pic'));
+      vanilla_tilt__WEBPACK_IMPORTED_MODULE_0___default.a.init(document.querySelector('#picfull'));
     }
   },
   computed: {
@@ -38406,7 +38406,18 @@ var render = function() {
   return _c("div", [
     _c("img", {
       staticClass: "w-100 h100",
-      attrs: { src: _vm.source, alt: "" },
+      attrs: {
+        id: "picfull",
+        "data-tilt": "",
+        "data-tilt-max": "2.6",
+        "data-tilt-easing": "cubic-bezier(.03,.98,.52,.99)",
+        "data-tilt-scale": "1.04",
+        "data-tilt-glare": "",
+        "data-tilt-max-glare": "0.13",
+        "data-tilt-reverse": "false",
+        src: _vm.source,
+        alt: ""
+      },
       on: { load: _vm.vanillaTilt }
     })
   ])

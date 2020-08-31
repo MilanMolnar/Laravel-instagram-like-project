@@ -3,8 +3,8 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div data-tilt data-tilt-max="2.6" data-tilt-easing="cubic-bezier(.03,.98,.52,.99)" data-tilt-scale="1.04" data-tilt-glare data-tilt-max-glare="0.13" data-tilt-reverse="false" id="pic" class="col-8">
-            <post-image id="post-full" post="{{$post->image}}"> </post-image>
+        <div  id="pic" class="col-8">
+            <post-image   id="post-full" post="{{$post->image}}"> </post-image>
         </div>
 
         <div class="col-4">
@@ -15,8 +15,8 @@
                     </div>
 
                     <div>
-                        <h5 class="font-weight-bold">
-                            <a style="color: #1b4b72" href="/profile/{{ $post->user->id }}">{{$post->user->username}}</a>
+                        <h5 style="font-size: medium" class="font-weight-bold">
+                            <a style="color: #1b4b72; " href="/profile/{{ $post->user->id }}">{{$post->user->username}}</a>
                              •
                             @if($post->user->id != auth()->user()->id)
                                 <a href="/profile/{{ $post->user->id }}" style="font-size: smaller">View Profile</a>

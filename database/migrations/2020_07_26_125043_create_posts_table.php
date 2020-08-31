@@ -21,6 +21,7 @@ class CreatePostsTable extends Migration
             $table->string('desc');
             $table->string('caption');
             $table->string('image');
+            $table->string('thumbnail');
 
             //index for foreign keys
             $table->index('user_id');

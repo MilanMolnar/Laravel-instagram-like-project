@@ -77,14 +77,24 @@ class PostsController extends Controller
         ]);
 
         $imagePath = request('image')->store('uploads','public');
+        $thumbnailPath = request('image')->store('thumbnail','public');
 
-        $image = Image::make(public_path("storage/{$imagePath}"))->fit(1200,1200);
+        $thumbnail = Image::make(public_path("storage/{$thumbnailPath}"))->fit(600,600, function ($constraint) {
+            $constraint->aspectRatio();
+            $constraint->upsize();
+        });
+        $thumbnail->save();
+
+        $image = Image::make(public_path("storage/{$imagePath}"));
         $image->save();
+
+
         auth()->user()->posts()->create([
             'caption' => $data['caption'],
             'desc'=> $data['desc'],
             'likes' => 0,
             'image' => $imagePath,
+            'thumbnail' => $thumbnailPath
         ]);
         return redirect('/profile/' . auth()->user()->id);
     }

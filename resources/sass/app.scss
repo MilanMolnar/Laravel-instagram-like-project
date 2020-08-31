@@ -146,7 +146,6 @@
     transform : scale(1.25);
 }
 #post-full{
-    border: solid whitesmoke 2px;
     box-shadow:
         0 2.8px 2.2px rgba(0, 0, 0, 0.044),
         0 6.7px 5.3px rgba(0, 0, 0, 0.058),
@@ -489,4 +488,6 @@ main {
     border-radius: 20px;
     margin-bottom: 20px;
 }
-
+#picfull{
+    border: 2px white solid;
+}
