@@ -1,7 +1,4 @@
 
-|PHP build status|Laravel build status|
-|----------------|--------------------|
-| ![PHP Composer](https://github.com/MilanMolnar/Laravel-instagram-like-project/workflows/PHP%20Composer/badge.svg) | ![Laravel](https://github.com/MilanMolnar/Laravel-instagram-like-project/workflows/Laravel/badge.svg) |
 
 # Laravel Instagram like project
 This project focuses on the basic capabilites of a social media application
